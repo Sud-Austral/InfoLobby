@@ -2,34 +2,20 @@ import pandas as pd
 import time
 import requests
 
-def dataSinModificacion(url, ruta):
-    try:
-        dfDato = pd.read_csv(url, encoding = "ISO-8859-1", sep = ";")
-        dfDato.to_excel(ruta, index=False)
-    except Exception as e: 
-        print (f"Hubo un error en: {url}")
-        print ("Código error: "+str(e))
-
-def lecturaArchivos():
-    try:
-        df = pd.read_excel(r"http://www.cplt.cl/transparencia_activa/datoabierto/archivos/Tipologias%20y%20Asignaciones%20Especiales.xlsx")
-        df.to_excel("Asignaciones_Especiales")
-    except Exception as e:
-        print ("Código error: "+str(e))
-
-def fuente():
-    fuente = pd.read_excel(r"Descargas_1.xlsx")
-    return fuente
-
-def cargarDatos():
-    referencia = fuente()
-
-    for i in range (len(referencia)):
-        dataSinModificacion(referencia["URL"][i],referencia["ruta"][i])
-        print("Archivo actualizado con éxito")
+def descarga():
+    salida11 = []
+    for i in (2022):
+        for j in range(1,5):
+            try:
+                url = f"https://www.infolobby.cl/DatosAbiertos/Catalogos/VirtuosoLobby/Datasets/{i}/{j}/donativos/csv"
+                dfOut = pd.read_csv(url)
+                #dfOut.to_excel(f"activos_{i}_{j}.xlsx", index = False)
+                salida11.append(dfOut.copy())
+            except:
+                print(url)
+    dfFinal = pd.concat(salida11)
+    dfFinal.to_csv("donativos_consolidado.csv", index = False)
 
 
 if __name__ == '__main__':
-    #dataSinModificacion(url = '', ruta = '')
-    lecturaArchivos()
-    cargarDatos()
+    descarga()

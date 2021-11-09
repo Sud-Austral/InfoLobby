@@ -3,19 +3,37 @@ import time
 import requests
 
 def descarga():
-    salida11 = []
-    for i in (2022):
-        for j in range(1,5):
-            try:
-                url = f"https://www.infolobby.cl/DatosAbiertos/Catalogos/VirtuosoLobby/Datasets/{i}/{j}/donativos/csv"
-                dfOut = pd.read_csv(url)
-                #dfOut.to_excel(f"activos_{i}_{j}.xlsx", index = False)
-                salida11.append(dfOut.copy())
-            except:
-                print(url)
-    dfFinal = pd.concat(salida11)
-    dfFinal.to_csv("donativos_consolidado.csv", index = False)
+    salida = []
+    for i in range(1,4):
+        try:
+            url = f"https://www.infolobby.cl/DatosAbiertos/Catalogos/VirtuosoLobby/Datasets/2021/{i}/activos/csv"
+            dfOut = pd.read_csv(url)
+            salida.append(dfOut.copy())
+        except:
+            print(url)
+    dfFinal = pd.concat(salida)
+    return dfFinal
+
+def lecturaCsv():
+    df2 = pd.read_csv(r"csvConsolidados/activos_consolidado.csv")
+    return df2
+
+def extraccionAños():
+    df2 = lecturaCsv();
+    dfFinal = descarga();
+
+    df2 = df2[df2["anio"] != 2021]
+    dfUpdate = dfFinal[dfFinal["anio"]==2021]
+    return df2, dfUpdate
+
+def concatenacion():
+    df2 = extraccionAños();
+    dfUpdate = extraccionAños();
+
+    dfConsolidado = pd.concat([df2, dfUpdate])
+    with pd.ExcelWriter('activos_consolidado.xlsx',options={'strings_to_urls': False}) as writer:
+    dfConsolidado.to_excel(writer, index = False)
 
 
 if __name__ == '__main__':
-    descarga()
+    concatenacion();

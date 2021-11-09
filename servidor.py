@@ -18,14 +18,6 @@ def lecturaCsv():
     df2 = pd.read_csv(r"csvConsolidados/activos_consolidado.csv")
     return df2
 
-def concatenacion():
-    df2 = extraccionAños();
-    dfUpdate = extraccionAños();
-
-    dfConsolidado = pd.concat([df2, dfUpdate])
-    with pd.ExcelWriter('activos_consolidado.xlsx',options={'strings_to_urls': False}) as writer:
-        dfConsolidado.to_excel(writer, index = False)
-
 def extraccionAños():
     df2 = lecturaCsv();
     dfFinal = descarga();
@@ -34,6 +26,12 @@ def extraccionAños():
     dfUpdate = dfFinal[dfFinal["anio"]==2021]
     return df2, dfUpdate
 
+def concatenacion():
+    df2,dfUpdate = extraccionAños();
+
+    dfConsolidado = pd.concat([df2, dfUpdate])
+    with pd.ExcelWriter('activos_consolidado.xlsx',options={'strings_to_urls': False}) as writer:
+        dfConsolidado.to_excel(writer, index = False)
 
 
 if __name__ == '__main__':

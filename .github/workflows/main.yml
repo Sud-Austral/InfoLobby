@@ -27,7 +27,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-        python servidor.py
+        python automatizacion_activos.py
+        python automatizacion_pasivos.py
 
     - uses: stefanzweifel/git-auto-commit-action@v2
       with:

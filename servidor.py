@@ -32,7 +32,7 @@ def concatenacion():
 
     dfConsolidado = pd.concat([df2, dfUpdate])
     with pd.ExcelWriter('activos_consolidado.xlsx',options={'strings_to_urls': False}) as writer:
-    dfConsolidado.to_excel(writer, index = False)
+        dfConsolidado.to_excel(writer, index = False)
 
 
 if __name__ == '__main__':

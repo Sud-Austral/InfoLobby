@@ -12,18 +12,20 @@ def descarga():
         except:
             print(url)
     dfFinal = pd.concat(salida)
+    dfFinal["Año"] = dfFinal["inicioPasivo"].apply(lambda x: str(x)[0:4])
     return dfFinal
 
 def lecturaCsv():
     df2 = pd.read_csv(r"csvConsolidados/pasivos_consolidado.csv")
+    df2["Año"] = df2["inicioPasivo"].apply(lambda x: str(x)[0:4])
     return df2
 
 def extraccionAños():
     df2 = lecturaCsv();
     dfFinal = descarga();
 
-    df2 = df2[df2["anio"] != 2021]
-    dfUpdate = dfFinal[dfFinal["anio"]==2021]
+    df2 = df2[df2["Año"] != 2021]
+    dfUpdate = dfFinal[dfFinal["Año"]==2021]
     return df2, dfUpdate
 
 def concatenacion():

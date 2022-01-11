@@ -32,7 +32,7 @@ jobs:
         python automatizacion_activos.py
         python automatizacion_pasivos.py
         python automatizacion_audiencias.py
-        python automatizacion_datos_audiencias.py
+        python automatizacion_datosAudiencias.py
         python automatizacion_asistenciasPasivos.py
         python automatizacion_pasivos.py
 

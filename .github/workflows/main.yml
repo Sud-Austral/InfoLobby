@@ -4,10 +4,10 @@ name: Descargas mensuales InfoLobby
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
-  #  branches: [ main ]
-  schedule:
-    - cron:  '0 0 * * 1'
+  push:
+    branches: [ main ]
+  #schedule:
+  #  - cron:  '0 0 * * 1'
 
 jobs:
   build:
@@ -30,6 +30,10 @@ jobs:
         pip install -r requirements.txt
 
         python automatizacion_activos.py
+        python automatizacion_pasivos.py
+        python automatizacion_audiencias.py
+        python automatizacion_datos_audiencias.py
+        python automatizacion_asistenciasPasivos.py
         python automatizacion_pasivos.py
 
     - uses: stefanzweifel/git-auto-commit-action@v2

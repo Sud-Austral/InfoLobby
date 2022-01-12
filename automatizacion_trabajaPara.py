@@ -15,7 +15,7 @@ def descarga():
     return dfFinal
 
 def csv():
-    df2 = pd.read_csv(r"trabajaPara_consolidado.csv")
+    df2 = pd.read_csv(r"csvConsolidados/trabajaPara_consolidado.csv")
     return df2
 
 def concatenacion():

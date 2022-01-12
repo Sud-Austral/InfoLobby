@@ -15,8 +15,8 @@ def descarga():
     return dfFinal
 
 def lecturaCsv():
-    df2 = pd.read_csv(r"asistenciasActivos2.csv")
-    df3 = pd.read_csv(r"asistenciasActivos1.csv")
+    df2 = pd.read_csv(r"csvConsolidados/asistenciasActivos2.csv")
+    df3 = pd.read_csv(r"csvConsolidados/asistenciasActivos1.csv")
 
     dfConcat = pd.concat ([df2, df3])
     return dfConcat

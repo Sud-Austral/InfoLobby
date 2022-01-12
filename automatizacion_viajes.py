@@ -17,8 +17,8 @@ def descarga():
     return dfFinal
 
 def lecturaCsv():
-    df2 = pd.read_csv(r"viajes2.csv")
-    df3 = pd.read_csv(r"viajes1.csv")
+    df2 = pd.read_csv(r"csvConsolidados/viajes2.csv")
+    df3 = pd.read_csv(r"csvConsolidados/viajes1.csv")
 
     dfConcat = pd.concat ([df2, df3])
     dfConcat["Año"] = dfConcat["fechaInicio"].apply(lambda x: str(x)[0:4])

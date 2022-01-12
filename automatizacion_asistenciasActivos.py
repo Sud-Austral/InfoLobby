@@ -6,7 +6,7 @@ def descarga():
     salida = []
     for i in range(1,4):
         try:
-            url = f"https://www.infolobby.cl/DatosAbiertos/Catalogos/VirtuosoLobby/Datasets/2021/{i}/asistenciasPasivos/csv"
+            url = f"https://www.infolobby.cl/DatosAbiertos/Catalogos/VirtuosoLobby/Datasets/2021/{i}/asistenciasActivos/csv"
             dfOut = pd.read_csv(url)
             salida.append(dfOut.copy())
         except:

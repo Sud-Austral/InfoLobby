@@ -14,11 +14,17 @@ def descarga():
     dfFinal = pd.concat(salida)
     return dfFinal
 
+def csv():
+    df2 = pd.read_csv(r"asistenciasPasivos_consolidado.csv")
+    return df2
+
 def concatenacion():
     dfFinal = descarga()
+    df2 = csv()
 
+    dfConsolidado = pd.concat([df2, dfFinal])
     with pd.ExcelWriter('InfoLobby/pasivos_consolidado.xlsx',options={'strings_to_urls': False}) as writer:
-        dfFinal.to_excel(writer, index = False)
+        dfConsolidado.to_excel(writer, index = False)
 
 
 if __name__ == '__main__':

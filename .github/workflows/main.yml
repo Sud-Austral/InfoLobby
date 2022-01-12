@@ -33,8 +33,13 @@ jobs:
         python automatizacion_pasivos.py
         python automatizacion_audiencias.py
         python automatizacion_datosAudiencias.py
+        python automatizacion_asistenciasActivos.py
         python automatizacion_asistenciasPasivos.py
         python automatizacion_pasivos.py
+        python automatizacion_viajes.py
+        python automatizacion_trabajaPara.py
+        python automatizacion_donativos.py
+        python automatizacion_otrosAsistentes.py
 
     - uses: stefanzweifel/git-auto-commit-action@v2
       with:

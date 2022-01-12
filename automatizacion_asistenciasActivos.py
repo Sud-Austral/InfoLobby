@@ -24,12 +24,11 @@ def lecturaCsv():
 
 def concatenacion():
     dfFinal = descarga()
-    dfConcat =lecturaCsv()
+    dfConcat = lecturaCsv()
 
     dfConsolidado = pd.concat([dfConcat, dfFinal])
     with pd.ExcelWriter('InfoLobby/asistenciasActivos_consolidado.xlsx',options={'strings_to_urls': False}) as writer:
         dfConsolidado.to_excel(writer, index = False)
-
 
 if __name__ == '__main__':
     concatenacion();

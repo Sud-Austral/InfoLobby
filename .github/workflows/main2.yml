@@ -1,5 +1,5 @@
 
-name: Descargas mensuales InfoLobby
+name: Descargas mensuales InfoLobby (AsistenciasActivos)
 
 # Controls when the workflow will run
 on:
@@ -29,26 +29,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-        python automatizacion_activos.py
-        echo 'Actualización 1 completa'
-        python automatizacion_pasivos.py
-        echo 'Actualización 2 completa'
-        python automatizacion_audiencias.py
-        echo 'Actualización 3 completa'
-        python automatizacion_datosAudiencias.py
-        echo 'Actualización 4 completa'
-        python automatizacion_otrosAsistentes.py
-        echo 'Actualización 5 completa'
-        python automatizacion_asistenciasPasivos.py
-        echo 'Actualización 6 completa'
-        python automatizacion_pasivos.py
-        echo 'Actualización 7 completa'
-        python automatizacion_viajes.py
-        echo 'Actualización 8 completa'
-        python automatizacion_trabajaPara.py
-        echo 'Actualización 9 completa'
-        python automatizacion_donativos.py
-        echo 'Actualización 10 completa'
+        python automatizacion_asistenciasActivos.py
+        echo 'Actualización 11 completa'
 
     - uses: stefanzweifel/git-auto-commit-action@v2
       with:
